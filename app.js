@@ -12,10 +12,10 @@ const app = express();
 const homeContent = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem ipsam quod sunt autem reiciendis quaerat cum magnam cupiditate temporibus, repudiandae, facilis ducimus sit aperiam, explicabo libero accusantium rem reprehenderit. Maxime."
 
 // Starting about page content
-const aboutContent = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem ipsam quod sunt autem reiciendis quaerat cum magnam cupiditate temporibus, repudiandae, facilis ducimus sit aperiam, explicabo libero accusantium rem reprehenderit. Maxime."
+const aboutContent = "Lorem quod sunt autem reiciendis quaerat cum magnam cupiditate temporibus, explicabo libero accusantium rem reprehenderit. Maxime, repudiandae, facilis ducimus sit aperiam. ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem ipsam "
 
 // Starting contact page content
-const contactContent = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem ipsam quod sunt autem reiciendis quaerat cum magnam cupiditate temporibus, repudiandae, facilis ducimus sit aperiam, explicabo libero accusantium rem reprehenderit. Maxime."
+const contactContent = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationemmagnam cupiditate ipsam quod sunt autem reiciendis quaerat cum temporibus, repudiandae, facilis ducimus sit aperiam, explicabo libero accusantium rem reprehenderit. Maxime."
 
 // needed to use EJS
 app.set("view engine", "ejs");
