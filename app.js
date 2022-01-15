@@ -10,7 +10,7 @@ const app = express();
 let posts = []
 
 // // Starting home page content
-// const homeContent = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem ipsam quod sunt autem reiciendis quaerat cum magnam cupiditate temporibus, repudiandae, facilis ducimus sit aperiam, explicabo libero accusantium rem reprehenderit. Maxime."
+const startingHomeContent = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem ipsam quod sunt autem reiciendis quaerat cum magnam cupiditate temporibus, repudiandae, facilis ducimus sit aperiam, explicabo libero accusantium rem reprehenderit. Maxime."
 
 // Starting about page content
 const aboutContent = "Lorem quod sunt autem reiciendis quaerat cum magnam cupiditate temporibus, explicabo libero accusantium rem reprehenderit. Maxime, repudiandae, facilis ducimus sit aperiam. ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem ipsam "
@@ -28,7 +28,10 @@ app.use(express.static("public"));
 
 // Home Page
 app.get("/", function(req, res) {
-    res.render("home", {homeContent: posts});
+    res.render("home", {
+        homeContent: posts,
+        startingContent: startingHomeContent
+    });
 })
 
 // About Page

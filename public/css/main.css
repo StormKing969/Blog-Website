@@ -32,6 +32,10 @@ nav h1 {
   padding: 2rem;
 }
 
+.home p {
+  margin-bottom: 1rem;
+}
+
 .home_postTitle {
   font-size: 2rem;
 }
