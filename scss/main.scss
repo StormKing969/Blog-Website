@@ -2,6 +2,7 @@
 @import "home";
 @import "about";
 @import "contact";
+@import "compose";
 @import "footer";
 
 * {
@@ -13,6 +14,7 @@
 body {
     position: relative;
     // background: #EEEEEE;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 a {

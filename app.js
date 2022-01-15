@@ -7,9 +7,10 @@ const ejs = require("ejs");
 const port = process.env.PORT || 3000;
 
 const app = express();
+let posts = []
 
-// Starting home page content
-const homeContent = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem ipsam quod sunt autem reiciendis quaerat cum magnam cupiditate temporibus, repudiandae, facilis ducimus sit aperiam, explicabo libero accusantium rem reprehenderit. Maxime."
+// // Starting home page content
+// const homeContent = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem ipsam quod sunt autem reiciendis quaerat cum magnam cupiditate temporibus, repudiandae, facilis ducimus sit aperiam, explicabo libero accusantium rem reprehenderit. Maxime."
 
 // Starting about page content
 const aboutContent = "Lorem quod sunt autem reiciendis quaerat cum magnam cupiditate temporibus, explicabo libero accusantium rem reprehenderit. Maxime, repudiandae, facilis ducimus sit aperiam. ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem ipsam "
@@ -23,23 +24,44 @@ app.set("view engine", "ejs");
 // need to use "body"
 app.use(bodyParser.urlencoded({extended: true}));
 // used to style the pages
-app.use(express.static("public"))
+app.use(express.static("public"));
 
 // Home Page
 app.get("/", function(req, res) {
-    res.render("home", {homeContent: homeContent})
+    res.render("home", {homeContent: posts});
 })
 
 // About Page
 app.get("/about", function(req, res) {
-    res.render("about", {aboutContent: aboutContent})
+    // .render("ejs page", {any variable in the ejs page: corresponding variable in app.js})
+    res.render("about", {aboutContent: aboutContent});
 })
 
 // Contact Page
 app.get("/contact", function(req, res) {
-    res.render("contact", {contactContent: contactContent})
+    res.render("contact", {contactContent: contactContent});
 })
 
+// Compose Page
+app.get("/compose", function(req, res) {
+    res.render("compose");
+})
+
+app.post("/compose", function(req, res) {
+    // A javascript object to store the user input
+    const post = {
+        inputTitle :req.body.userTitleInput,
+        inputContent : req.body.userPostInput
+    }
+
+    // Update the posts array
+    posts.push(post);
+
+    // Sends the user back to the home page
+    res.redirect("/");
+})
+
+
 app.listen(port, function() {
-    console.log("Server is connected to port " + port)
-});
+    console.log("Server is connected to port " + port);
+})

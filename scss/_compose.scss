@@ -1,0 +1,49 @@
+.compose {
+    padding: 2rem 10rem 2rem 2rem;
+
+    h1 {
+        text-transform: uppercase;
+        margin: 0 0 1rem;
+    }
+
+    .userPost {
+        color: gray;
+
+        .form_title {
+            display: flex;
+            flex-direction: column;
+            margin: 0 0 1rem;
+
+            input {
+                border: 1px gray solid;
+            }
+        }
+
+        .form_content {
+            display: flex;
+            flex-direction: column;
+            margin: 0 0 1rem;
+
+            .input_content {
+                text-transform: uppercase;
+                font-weight: 700;
+            }
+        }
+
+        button {
+            cursor: pointer;
+            background: rgb(80, 80, 197);
+            color: white;
+            border-radius: .4rem;
+            width: 4rem;
+            height: 2rem;
+            border: 0;
+        }
+    }
+}
+
+.input_title {
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: .2rem;
+}

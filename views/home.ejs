@@ -1,10 +1,20 @@
 <!-- Import the header section -->
 <%- include("./header"); %>
 <section class="home" id="home">
-    <h1>Home</h1>
-    <p>
-        <%= homeContent %> 
-    </p>
+    <div class="display">
+        <!-- Loops through the "posts" array -->
+        <% for(var i = 0; i < homeContent.length; i++) { %> 
+            <!-- Creates each post in the array -->
+            <div class="home_postTitle">
+                <!-- Displays the title of the post -->
+                <p><%= homeContent[i].inputTitle %></p>
+            </div>
+            <div class="home_postContent">
+                <!-- Displays the content of the post -->
+                <p><%= homeContent[i].inputContent %></p>
+            </div>
+        <% } %> 
+    </div>
 </section>
 
 <!-- Import the footer section -->

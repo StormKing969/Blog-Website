@@ -7,6 +7,10 @@ nav {
     background: #DDDDDD;
     color: gray;
     text-transform: uppercase;
+
+    h1 {
+        cursor: pointer;
+    }
 }
 
 .nav_links {
@@ -14,5 +18,6 @@ nav {
     a {
         margin: 0 1rem;
         color: gray;
+        cursor: pointer;
     }
 }

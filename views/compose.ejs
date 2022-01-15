@@ -1,6 +1,23 @@
 <!-- Import the header section -->
 <%- include("./header"); %>
 
+<section class="compose">
+    <h1>Compose</h1>
+
+    <form class="userPost" action="/compose" method="post">
+        <div class="form_title">
+            <label for="" class="input_title">Title</label>
+            <input type="text" autocomplete="off" name="userTitleInput">
+        </div>
+
+        <div class="form_content">
+            <label for="" class="input_title">Post</label>
+            <textarea name="userPostInput" id="user_formPost" cols="30" rows="10"></textarea>
+        </div>
+
+        <button type="submit" name="btn">Publish</button>
+    </form>
+</section>
 
 <!-- Import the footer section -->
 <%- include("./footer"); %>

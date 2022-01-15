@@ -18,13 +18,26 @@ nav {
   text-transform: uppercase;
 }
 
+nav h1 {
+  cursor: pointer;
+}
+
 .nav_links a {
   margin: 0 1rem;
   color: gray;
+  cursor: pointer;
 }
 
 .home {
   padding: 2rem;
+}
+
+.home_postTitle {
+  font-size: 2rem;
+}
+
+.home_postContent {
+  margin-bottom: 1rem;
 }
 
 .about {
@@ -33,6 +46,66 @@ nav {
 
 .contact {
   padding: 2rem;
+}
+
+.compose {
+  padding: 2rem 10rem 2rem 2rem;
+}
+
+.compose h1 {
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+}
+
+.compose .userPost {
+  color: gray;
+}
+
+.compose .userPost .form_title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 0 1rem;
+}
+
+.compose .userPost .form_title input {
+  border: 1px gray solid;
+}
+
+.compose .userPost .form_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 0 1rem;
+}
+
+.compose .userPost .form_content .input_content {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.compose .userPost button {
+  cursor: pointer;
+  background: #5050c5;
+  color: white;
+  border-radius: .4rem;
+  width: 4rem;
+  height: 2rem;
+  border: 0;
+}
+
+.input_title {
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: .2rem;
 }
 
 footer {
@@ -57,6 +130,7 @@ a {
 
 body {
   position: relative;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 a {
