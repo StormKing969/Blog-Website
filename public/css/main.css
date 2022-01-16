@@ -28,6 +28,10 @@ nav h1 {
   cursor: pointer;
 }
 
+.nav_links a:hover {
+  color: white;
+}
+
 .home {
   padding: 2rem;
 }

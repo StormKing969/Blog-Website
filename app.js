@@ -64,6 +64,18 @@ app.post("/compose", function(req, res) {
     res.redirect("/");
 })
 
+// Compose Page
+app.get("/post/:topic", function(req, res) {
+    const postTitle = req.params.topic;
+
+    posts.forEach(post => {
+        if(post.inputTitle === postTitle) {
+            console.log("Match Found");
+        } else {
+            console.log("No Match Found");
+        }
+    })
+})
 
 app.listen(port, function() {
     console.log("Server is connected to port " + port);
