@@ -36,7 +36,7 @@ nav h1 {
   padding: 2rem;
 }
 
-.home p {
+.home .intro {
   margin-bottom: 1rem;
 }
 
@@ -46,6 +46,15 @@ nav h1 {
 
 .home_postContent {
   margin-bottom: 1rem;
+}
+
+.home_postContent a {
+  color: gray;
+  margin-bottom: 1rem;
+}
+
+.home_postContent a:hover {
+  color: #222121;
 }
 
 .about {
@@ -114,6 +123,22 @@ nav h1 {
   text-transform: uppercase;
   font-weight: 700;
   margin-bottom: .2rem;
+}
+
+.post {
+  padding: 2rem;
+}
+
+.post p {
+  margin-bottom: 1rem;
+}
+
+.post_postTitle {
+  font-size: 2rem;
+}
+
+.post_postContent {
+  margin-bottom: 1rem;
 }
 
 footer {

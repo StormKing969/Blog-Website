@@ -1,6 +1,18 @@
 <!-- Import the header section -->
-<%- include("./header"); %>
+<%- include("partials/header"); %>
 
+<section class="post" id="post">
+    <div class="post_display">
+        <div class="post_postTitle">
+            <!-- Displays the title of the post -->
+            <p><%= chosenPostTitle %></p>
+        </div>
+        <div class="post_postContent">
+            <!-- Displays the content of the post -->
+            <p><%= chosenPostContent %></p>
+        </div>
+    </div>
+</section>
 
 <!-- Import the footer section -->
-<%- include("./footer"); %>
+<%- include("partials/footer"); %>
