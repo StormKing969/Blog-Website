@@ -2,8 +2,6 @@
 <%- include("partials/header"); %>
 
 <section class="home" id="home">
-    <p class="intro"><%= startingContent %></p>
-
     <div class="display">
         <!-- Loops through the "post" array -->
         <% homeContent.forEach(content => { %> 
@@ -14,9 +12,9 @@
             </div>
             <div class="home_postContent">
                 <!-- Displays the content of the post -->
-                <p><%= truncateString(content.inputContent, 100) %></p>
+                <p><%= truncateString(content.content, 100) %></p>
 
-                <a href="/posts/<%= content.inputTitle %>" >Read More</a>
+                <a href="/posts/<%= content.name %>" >Read More</a>
             </div>
         <% }) %> 
     </div>

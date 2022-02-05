@@ -1,26 +1,24 @@
-// jshint esversion:6
+// ==================== Setup Section Start ========================
+// Using .env file to store sensitive data
+require("dotenv").config();
 
+// Extracting the required information
+const DB = String(process.env.DB_URL);
+
+// jshint esversion:6
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
+const mongoose = require("mongoose");
 
 const port = process.env.PORT || 3000;
 
 const app = express();
-let posts = [];
+// let posts = [];
 
 // importing local module
 const truncate = require(__dirname + "/helper/truncateString.js");
-
-// // Starting home page content
-const startingHomeContent = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem ipsam quod sunt autem reiciendis quaerat cum magnam cupiditate temporibus, repudiandae, facilis ducimus sit aperiam, explicabo libero accusantium rem reprehenderit. Maxime.";
-
-// Starting about page content
-const aboutContent = "Lorem quod sunt autem reiciendis quaerat cum magnam cupiditate temporibus, explicabo libero accusantium rem reprehenderit. Maxime, repudiandae, facilis ducimus sit aperiam. ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem ipsam ";
-
-// Starting contact page content
-const contactContent = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationemmagnam cupiditate ipsam quod sunt autem reiciendis quaerat cum temporibus, repudiandae, facilis ducimus sit aperiam, explicabo libero accusantium rem reprehenderit. Maxime.";
 
 // needed to use EJS
 app.set("view engine", "ejs");
@@ -30,13 +28,36 @@ app.use(bodyParser.urlencoded({extended: true}));
 // used to style the pages
 app.use(express.static("public"));
 
+// Create mongoose DB
+mongoose.connect(DB);
+
+// ==================== Setup Section End ========================
+
+// ==================== Schema Section Start ========================
+
+const postsSchema = {
+    name: String,
+    content: String
+};
+
+const Post = mongoose.model("Post", postsSchema);
+
+// ==================== Schema Section End ========================
+
+// ==================== Get/Post Section Start ========================
+
 // Home Page
 app.get("/", function(req, res) {
-    res.render("home", {
-        startingContent: startingHomeContent,
-        homeContent: posts,
-        truncateString: truncate
-    });
+    Post.find({}, function(err, itemsFound) {
+        if(!err) {
+            res.render("home", {
+                homeContent: itemsFound,
+                truncateString: truncate
+            });
+        } else {
+            console.log(err);
+        }
+    })
 })
 
 // About Page
@@ -57,13 +78,12 @@ app.get("/compose", function(req, res) {
 
 app.post("/compose", function(req, res) {
     // A javascript object to store the user input
-    const post = {
-        inputTitle :req.body.userTitleInput,
-        inputContent : req.body.userPostInput
-    };
+    const postTitle = req.body.userTitleInput;
+    const postContent = req.body.userPostInput;
+
 
     // Update the posts array
-    posts.push(post);
+    updatePostList(postTitle, postContent).save();
 
     // Sends the user back to the home page
     res.redirect("/");
@@ -74,18 +94,43 @@ app.get("/posts/:topic", function(req, res) {
     // Convert to lowercase using lodash
     const postTitle = _.lowerCase(req.params.topic);
 
-    posts.forEach(post => {
-        const storedTitle = _.lowerCase(post.inputTitle);
+    Post.find({}, function(err, itemsFound) {
+        if(!err) {
+            itemsFound.forEach(post => {
+                const storedTitle = _.lowerCase(post.name);
 
-        if(storedTitle === postTitle) {
-            res.render("post", {
-                chosenPostTitle: post.inputTitle, 
-                chosenPostContent: post.inputContent
-            });
-        } 
+                if(storedTitle === postTitle) {
+                    res.render("post", {
+                        chosenPostTitle: post.name, 
+                        chosenPostContent: post.content
+                    });
+                } 
+            })
+        } else {
+            console.log(err);
+        }
     })
 })
 
+// ==================== Get/Post Section End ========================
+
+// ==================== Main Function Start ========================
+
 app.listen(port, function() {
     console.log("Server is connected to port " + port);
-})
+});
+
+// ==================== Main Function End ========================
+
+// ==================== Sub Function Start ========================
+
+function updatePostList(userTitle, userInput) {
+    const post = new Post({
+        name: userTitle,
+        content: userInput
+    });
+
+    return post;
+}
+
+// ==================== Sub Function End ========================
